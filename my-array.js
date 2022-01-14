@@ -4,7 +4,9 @@ function MyArr() {
     for (let i = 0; i < arguments.length; i++) {
         this[i] = arguments[i];
     }
+}
 
+function MyProtoArray() {
     this.push = function push() {
         for (let i = 0; i < arguments.length; i++) {
             this[this.length] = arguments[i];
@@ -40,7 +42,13 @@ function MyArr() {
         }
         return true;
     }
+
+    this.isMyArray = function isImeArray(obj) {
+        return (obj instanceof Object);
+    }
 }
+
+MyArr.prototype = new MyProtoArray();
 
 const arr1 = new MyArr(1,2,3,4);
 
@@ -57,6 +65,10 @@ const everyArr = arr1.every((el)=> {
     return el < 2 ;
 })
 
+const isArr = arr1.isMyArray(arr1);
+
+
 console.log('mapArr', mapArr);
 console.log('someArr', someArr);
 console.log('everyArr', everyArr);
+console.log('isArr', isArr);
