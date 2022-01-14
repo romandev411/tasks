@@ -13,10 +13,11 @@ const newPaper = {
 newPaper.showArt();
 
 const arrowArguments = (...args) => {
-    const arr = [];
-    args.forEach(el => arr.push(el));
+    let res = 0;
+    
+    args.forEach(el => res += el);
 
-    return arr;
+    return res;
 }
 
 console.log(arrowArguments(1,3,4,5,6));
