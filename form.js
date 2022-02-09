@@ -4,7 +4,8 @@ let template;
 
 function formHandler(e) {
     e.preventDefault();
-    const val = e.target.elements[0].value.toLowerCase();
+    const val = e.target.elements.message.value.toLowerCase();
+    console.log(e.target.elements.message)
 
     if (!val) {
         return;
@@ -13,6 +14,7 @@ function formHandler(e) {
     template = useState(val).map((el)=>render(el));
 
     list.append(template[template.length-1]);
+    e.target.reset();
 }
 
 function state(arr = []) {
